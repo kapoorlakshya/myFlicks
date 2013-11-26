@@ -1,0 +1,57 @@
+<%= form_for(@imdb_datum) do |f| %>
+  <% if @imdb_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@imdb_datum.errors.count, "error") %> prohibited this imdb_datum from being saved:</h2>
+
+      <ul>
+      <% @imdb_datum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :imdb_id %><br>
+    <%= f.text_field :imdb_id %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.text_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :release_date %><br>
+    <%= f.text_field :release_date %>
+  </div>
+  <div class="field">
+    <%= f.label :runtime %><br>
+    <%= f.text_field :runtime %>
+  </div>
+  <div class="field">
+    <%= f.label :genre %><br>
+    <%= f.text_field :genre %>
+  </div>
+  <div class="field">
+    <%= f.label :plot %><br>
+    <%= f.text_area :plot %>
+  </div>
+  <div class="field">
+    <%= f.label :poster %><br>
+    <%= f.text_field :poster %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br>
+    <%= f.text_field :rating %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<%= form_for(@flick) do |f| %>
+  <% if @flick.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@flick.errors.count, "error") %> prohibited this flick from being saved:</h2>
+
+      <ul>
+      <% @flick.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :imdb_id %><br>
+    <%= f.text_field :imdb_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

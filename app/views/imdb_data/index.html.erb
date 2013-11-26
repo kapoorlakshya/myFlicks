@@ -1,0 +1,45 @@
+<h1>Listing imdb_data</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Imdb</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Release date</th>
+      <th>Runtime</th>
+      <th>Genre</th>
+      <th>Plot</th>
+      <th>Poster</th>
+      <th>Rating</th>
+      <th>Type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @imdb_data.each do |imdb_datum| %>
+      <tr>
+        <td><%= imdb_datum.imdb_id %></td>
+        <td><%= imdb_datum.title %></td>
+        <td><%= imdb_datum.year %></td>
+        <td><%= imdb_datum.release_date %></td>
+        <td><%= imdb_datum.runtime %></td>
+        <td><%= imdb_datum.genre %></td>
+        <td><%= imdb_datum.plot %></td>
+        <td><%= imdb_datum.poster %></td>
+        <td><%= imdb_datum.rating %></td>
+        <td><%= imdb_datum.type %></td>
+        <td><%= link_to 'Show', imdb_datum %></td>
+        <td><%= link_to 'Edit', edit_imdb_datum_path(imdb_datum) %></td>
+        <td><%= link_to 'Destroy', imdb_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Imdb datum', new_imdb_datum_path %>

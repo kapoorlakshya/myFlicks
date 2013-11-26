@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Imdb:</strong>
+  <%= @imdb_datum.imdb_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @imdb_datum.title %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @imdb_datum.year %>
+</p>
+
+<p>
+  <strong>Release date:</strong>
+  <%= @imdb_datum.release_date %>
+</p>
+
+<p>
+  <strong>Runtime:</strong>
+  <%= @imdb_datum.runtime %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @imdb_datum.genre %>
+</p>
+
+<p>
+  <strong>Plot:</strong>
+  <%= @imdb_datum.plot %>
+</p>
+
+<p>
+  <strong>Poster:</strong>
+  <%= @imdb_datum.poster %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @imdb_datum.rating %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @imdb_datum.type %>
+</p>
+
+<%= link_to 'Edit', edit_imdb_datum_path(@imdb_datum) %> |
+<%= link_to 'Back', imdb_data_path %>
