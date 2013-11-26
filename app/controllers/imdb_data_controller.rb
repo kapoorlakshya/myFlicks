@@ -1,4 +1,7 @@
 class ImdbDataController < ApplicationController
+  require 'open-uri'
+  require 'json'
+
   before_action :set_imdb_datum, only: [:show, :edit, :update, :destroy]
 
   # GET /imdb_data
@@ -24,8 +27,27 @@ class ImdbDataController < ApplicationController
   # POST /imdb_data
   # POST /imdb_data.json
   def create
-    @imdb_datum = ImdbDatum.new(imdb_datum_params)
+    @imdb_datum = ImdbDatum.new(imdb_datum_params) # New movie entry
+ 
+    url = URI.escape("http://www.omdbapi.com/?i=#{imdb_datum_params["imdb_id"]}")
+    buffer = open(url, "UserAgent" => "Ruby-Wget").read
+    result = JSON.parse(buffer) # Parse JSON data to Hash
 
+    @imdb_datum.title = result["Title"]
+    @imdb_datum.year = result["Year"]
+    @imdb_datum.release_date = result["Released"]
+    @imdb_datum.runtime = result["Runtime"]
+    @imdb_datum.genre = result["Genre"]
+    @imdb_datum.rating = result["Rated"]
+    @imdb_datum.imdbrating = result["imdbRating"]
+    @imdb_datum.poster = result["Poster"]
+    @imdb_datum.plot = result["Plot"]
+    @imdb_datum.flick_type = result["Type"]
+    @imdb_datum.director = result["Director"]
+    @imdb_datum.writer = result["Writer"]
+    @imdb_datum.actors = result["Actors"]
+    @imdb_datum.save
+    
     respond_to do |format|
       if @imdb_datum.save
         format.html { redirect_to @imdb_datum, notice: 'Imdb datum was successfully created.' }

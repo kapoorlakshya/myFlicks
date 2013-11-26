@@ -64,11 +64,11 @@ class FlicksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_flick
-      @flick = Flick.find(params[:id])
+      @flick = Flick.find(params[:imdb_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flick_params
-      params.require(:flick).permit(:imdb_id)
+      params.require(:flick).permit(:user_id, :imdb_id)
     end
 end

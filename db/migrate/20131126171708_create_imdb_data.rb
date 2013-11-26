@@ -7,10 +7,14 @@ class CreateImdbData < ActiveRecord::Migration
       t.string :release_date
       t.string :runtime
       t.string :genre
-      t.text :plot
+      t.text   :plot
+      t.string :director
+      t.string :writer
+      t.string :rating
       t.string :poster
-      t.float :rating
-      t.string :type
+      t.string :actors
+      t.float  :imdbrating
+      t.string :flick_type
 
       t.timestamps
     end
