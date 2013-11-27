@@ -1,7 +1,7 @@
 body {
   background-color: #fff;
   margin: auto;
-  width: 960px;
+  width: 840px;
   color: #333;
   font-family: 'Droid Sans', sans-serif;
   font-size: 13px;
@@ -101,4 +101,41 @@ img {
   font-size: 2.5em;
   margin-bottom: 5px;
 }
+.show_heading {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 2.5em;
+  margin-bottom: 5px;
+  float: left;
+}
 
+#user_nav_options {
+  float: right;
+  position: relative;
+}
+
+#user_nav {
+  border-bottom: 1px solid;
+}
+
+#show_flick {
+  padding-top: 15px;
+}
+
+hr {
+  width: 50%;
+  color: #ccc;
+  margin-top: 0px;
+}
+
+#show_poster {
+  float: left;
+  position: relative;
+  margin-top: 16px;
+  margin-right: 5px;
+}
+
+div#show_poster img {
+  width: 95%;
+  height: auto;
+}

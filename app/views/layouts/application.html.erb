@@ -12,15 +12,23 @@
 <br />
 <div id="user_nav">
   <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    Hello, <strong><%= current_user.email.split('@')[0] %>!</strong>
+    <div id="user_nav_options">
+      <%= link_to "Home", root_url %>
+        <span class="separators">|</span>
+      <%= link_to 'Add a Flick', new_imdb_datum_path%>
+        <span class="separators">|</span>
+      <%= link_to "Your Flicks", edit_user_registration_path %> 
+        <span class="separators">|</span>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    </div>
   <% else %>
     <%= link_to "Sign up", new_user_registration_path %> or
     <%= link_to "Sign in", new_user_session_path %>
   <% end %>
 </div>
-
 <% if !flash[:notice].blank? %>
+  <br />
   <div class="alert alert-info">
   <%= flash[:notice] %>
   </div>

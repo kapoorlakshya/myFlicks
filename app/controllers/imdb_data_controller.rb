@@ -35,7 +35,8 @@ class ImdbDataController < ApplicationController
     @flick.imdb_id = imdb_value
     @flick.save
 
-    @imdb_datum = ImdbDatum.new(imdb_datum_params) # New movie entry 
+    @imdb_datum = ImdbDatum.new(imdb_datum_params) # New movie entry
+ 
     if imdb_value.match(/tt+\d*/)
       url = URI.escape("http://www.omdbapi.com/?i=#{imdb_value}")
     else
@@ -44,29 +45,39 @@ class ImdbDataController < ApplicationController
     buffer = open(url, "UserAgent" => "Ruby-Wget").read
     result = JSON.parse(buffer) # Parse JSON data to Hash
 
-    img = `curl --header "Authorization: Client-ID 7b8479c28beaf08" https://api.imgur.com/3/upload/?image=#{result["Poster"]}&type=URL`
-    imgur_hash = JSON.parse(img)
-
-    @imdb_datum.title = result["Title"]
-    @imdb_datum.year = result["Year"]
-    @imdb_datum.release_date = result["Released"]
-    @imdb_datum.runtime = result["Runtime"]
-    @imdb_datum.genre = result["Genre"]
-    @imdb_datum.rating = result["Rated"]
-    @imdb_datum.imdbrating = result["imdbRating"]
-    @imdb_datum.poster = imgur_hash["data"]["link"]
-    @imdb_datum.plot = result["Plot"]
-    @imdb_datum.flick_type = result["Type"].capitalize!
-    @imdb_datum.director = result["Director"]
-    @imdb_datum.writer = result["Writer"]
-    @imdb_datum.actors = result["Actors"]
-    @imdb_datum.save
-
-    if @flick.save && @imdb_datum.save
-      redirect_to root_url, notice: "#{@imdb_datum.title} (#{@imdb_datum.year}) was successfully added."
+    if result["Poster"] == "N/A"
+      imgur_link = "http://i.imgur.com/OLZVstb.png"
     else
-      render 'new'
+      img = `curl --header "Authorization: Client-ID 7b8479c28beaf08" https://api.imgur.com/3/upload/?image=#{result["Poster"]}&type=URL`
+      imgur_link = JSON.parse(img)["data"]["link"]
     end
+
+    if result["Response"] == "False"
+      redirect_to new_imdb_datum_path, notice: "Incorrect title or ID. Please try again with a valid value."
+    else
+      @imdb_datum.imdb_id = imdb_value
+      @imdb_datum.title = result["Title"]
+      @imdb_datum.year = result["Year"]
+      @imdb_datum.release_date = result["Released"]
+      @imdb_datum.runtime = result["Runtime"]
+      @imdb_datum.genre = result["Genre"]
+      @imdb_datum.rating = result["Rated"]
+      @imdb_datum.imdbrating = result["imdbRating"]
+      @imdb_datum.poster = imgur_link
+      @imdb_datum.plot = result["Plot"]
+      @imdb_datum.flick_type = result["Type"]
+      @imdb_datum.director = result["Director"]
+      @imdb_datum.writer = result["Writer"]
+      @imdb_datum.actors = result["Actors"]
+      @imdb_datum.save
+
+      if @flick.save && @imdb_datum.save
+        redirect_to root_url, notice: "#{@imdb_datum.title} (#{@imdb_datum.year}) was successfully added."
+      else
+        render 'new'
+      end
+    end
+
 =begin
     respond_to do |format|
       if @imdb_datum.save

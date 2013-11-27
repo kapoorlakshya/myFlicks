@@ -29,6 +29,7 @@ class FlicksController < ApplicationController
   # POST /flicks
   # POST /flicks.json
   def create
+=begin
 #    @flick = Flick.new(flick_params)
 
     respond_to do |format|
@@ -40,6 +41,7 @@ class FlicksController < ApplicationController
         format.json { render json: @flick.errors, status: :unprocessable_entity }
       end
     end
+=end
   end
 
   # PATCH/PUT /flicks/1

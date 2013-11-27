@@ -1,6 +1,3 @@
-<% if user_signed_in? %> <br />
-  <%= link_to 'Add a Flick', new_imdb_datum_path, class: "btn"%> 
-<% end %>
 <div class="main_body"> 
 <br />
 <br />
@@ -12,7 +9,7 @@
 
           <div id="poster_index"><img src="<%= imdb_datum.poster %>" /></div>
         
-          <div id="flick_title"><a href="<%= imdb_datum_path(imdb_datum.id) %>"><%= imdb_datum.title %> (<%= imdb_datum.year %>)</a></div>
+          <div id="flick_title"><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>"><%= imdb_datum.title %> (<%= imdb_datum.year %>)</a></div>
 
           <div id="flick_options">
           <small>    
