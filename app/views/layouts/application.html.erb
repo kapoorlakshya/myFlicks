@@ -18,7 +18,9 @@
         <span class="separators">|</span>
       <%= link_to 'Add a Flick', new_imdb_datum_path%>
         <span class="separators">|</span>
-      <%= link_to "Your Flicks", edit_user_registration_path %> 
+      <%= link_to 'Your Flicks', your_flicks_path(:user_id => current_user.id) %>
+        <span class="separators">|</span>
+      <%= link_to "Settings", edit_user_registration_path %> 
         <span class="separators">|</span>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
     </div>

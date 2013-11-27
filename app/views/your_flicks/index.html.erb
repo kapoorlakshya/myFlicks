@@ -1,0 +1,25 @@
+<h1>Listing your_flicks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @your_flicks.each do |your_flick| %>
+      <tr>
+        <td><%= link_to 'Show', your_flick %></td>
+        <td><%= link_to 'Edit', edit_your_flick_path(your_flick) %></td>
+        <td><%= link_to 'Destroy', your_flick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Your flick', new_your_flick_path %>

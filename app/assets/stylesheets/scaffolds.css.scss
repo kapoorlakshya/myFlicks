@@ -91,16 +91,13 @@ img {
   padding-right: 5px;
 }
 
-.well {
-  height: 100px;
-}
-
 .sub_heading {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   font-size: 2.5em;
   margin-bottom: 5px;
 }
+
 .show_heading {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
@@ -138,4 +135,8 @@ hr {
 div#show_poster img {
   width: 95%;
   height: auto;
+}
+
+.well {
+  height: 100px;
 }
