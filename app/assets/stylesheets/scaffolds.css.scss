@@ -1,7 +1,7 @@
 body {
   background-color: #fff;
   margin: auto;
-  width: 840px;
+  width: 960px;
   color: #333;
   font-family: 'Droid Sans', sans-serif;
   font-size: 13px;
@@ -9,7 +9,7 @@ body {
 }
 
 .main_body {
-  width: 60%;
+  width: 80%;
   margin: auto;
 }
 
@@ -46,22 +46,48 @@ body {
   }
 }
 
-
-img {
-  height: 30%;
-  width: auto;
-} 
-
 table {
   text-align: justify;
   text-justify: inter-word;
-}
-
-h2 {
-
 }
 
 .separators {
   color: #D8D8D8;
 }
 
+
+#flick_title {
+  float: left;
+  font-weight: 700;
+  margin: 2px;
+}
+
+#flick_options {
+  float: right;
+  position: relative;
+}
+
+#plot {
+  position: relative;
+  margin: 5px;
+  padding-left: 5px;
+  text-align: justify;
+}
+
+#plot_extras {
+  position: absolute;
+}
+
+img {
+  height:100px;
+  width: auto;
+}
+
+#poster_index {
+  float: left;
+  margin:  5px;
+}
+
+.well {
+  height: 100px;
+}

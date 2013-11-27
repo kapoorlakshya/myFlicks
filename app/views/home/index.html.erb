@@ -7,29 +7,29 @@
 
     <% @flicks.each do |imdb_datum| %>
         <div class="well">
-          <table class="table-bordered">
-          <tr>
-            <strong><%= imdb_datum.title %> (<%= imdb_datum.year %>)</strong>
-              <span style="float: right; margin-bottom: 4px;">
-              <small>    
-                <%= link_to 'Details', imdb_datum, class:"btn btn-mini"%> 
-                <%= link_to 'Remove', imdb_datum, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %> 
-              </small>
-          </tr>
-          <tr>
-            <img src="<%= imdb_datum.poster %>" /> <br />
-              <span>
-                <%= imdb_datum.plot %> 
-              </span>
-              <br />
-              <i class="icon-star"></i>
-              <small>
-                Rated: <%= imdb_datum.rating %> <span class="separators"">|</span>
-                Genre: <%= imdb_datum.genre %> <span class="separators"">|</span>
-                IMDB Rating: <%= imdb_datum.imdbrating %>  
-              </small>
-          </tr> 
-           </table>
+
+          <div id="poster_index"><img src="<%= imdb_datum.poster %>" /></div>
+        
+          <div id="flick_title"><%= imdb_datum.title %> (<%= imdb_datum.year %>)</div>
+          <br />
+          <div id="plot"><%= imdb_datum.plot %></div>
+
+          <span id="plot_extra">
+            <i class="icon-star"></i>
+            <small>
+              Rated: <%= imdb_datum.rating %> <span class="separators">|</span>
+              Genre: <%= imdb_datum.genre %> <span class="separators">|</span>
+              IMDB Rating: <%= imdb_datum.imdbrating %>  
+            </small>
+          </span>
+
+          <div id="flick_options">
+          <small>    
+            <%= link_to 'Details', imdb_datum, class:"btn btn-mini"%> 
+            <%= link_to 'Remove', imdb_datum, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %> 
+          </small>
+          </div>
+
         </div>
     <% end %>
 
