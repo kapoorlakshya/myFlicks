@@ -9,7 +9,8 @@ body {
 }
 
 .main_body {
-  width: 80%;
+  width: 75%;
+  height: auto;
   margin: auto;
 }
 
@@ -59,7 +60,7 @@ table {
 #flick_title {
   float: left;
   font-weight: 700;
-  margin: 2px;
+  margin: auto;
 }
 
 #flick_options {
@@ -75,7 +76,8 @@ table {
 }
 
 #plot_extras {
-  position: absolute;
+  position: relative;
+  padding-bottom: 10px;
 }
 
 img {
@@ -86,8 +88,17 @@ img {
 #poster_index {
   float: left;
   margin:  5px;
+  padding-right: 5px;
 }
 
 .well {
   height: 100px;
 }
+
+.sub_heading {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 2.5em;
+  margin-bottom: 5px;
+}
+

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @flicks = ImdbDatum.all
+    @flicks = ImdbDatum.first(10)
   end
 end

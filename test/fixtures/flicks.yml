@@ -2,6 +2,8 @@
 
 one:
   imdb_id: MyString
+  user_id: 1
 
 two:
   imdb_id: MyString
+  user_id: 1

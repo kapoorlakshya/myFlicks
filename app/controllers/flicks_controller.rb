@@ -4,7 +4,7 @@ class FlicksController < ApplicationController
   # GET /flicks
   # GET /flicks.json
   def index
-    @flicks = Flick.all
+    @flicks = Flick.all   
   end
 
   # GET /flicks/1
@@ -15,6 +15,11 @@ class FlicksController < ApplicationController
   # GET /flicks/new
   def new
     @flick = Flick.new
+    if params[:user_id]
+      @flick.user_id = params[:user_id]
+    else
+      redirect_to root_url
+    end
   end
 
   # GET /flicks/1/edit
@@ -24,7 +29,7 @@ class FlicksController < ApplicationController
   # POST /flicks
   # POST /flicks.json
   def create
-    @flick = Flick.new(flick_params)
+#    @flick = Flick.new(flick_params)
 
     respond_to do |format|
       if @flick.save
@@ -64,7 +69,7 @@ class FlicksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_flick
-      @flick = Flick.find(params[:imdb_id])
+      @flick = Flick.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

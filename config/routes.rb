@@ -1,5 +1,6 @@
 Myflicks::Application.routes.draw do
-  get "home/index"
+
+  get "home/index"  
   resources :flicks
   resources :imdb_data
   devise_for :users

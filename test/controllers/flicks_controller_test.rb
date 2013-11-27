@@ -18,7 +18,7 @@ class FlicksControllerTest < ActionController::TestCase
 
   test "should create flick" do
     assert_difference('Flick.count') do
-      post :create, flick: { imdb_id: @flick.imdb_id }
+      post :create, flick: { imdb_id: @flick.imdb_id, user_id: @flick.user_id }
     end
 
     assert_redirected_to flick_path(assigns(:flick))
@@ -35,7 +35,7 @@ class FlicksControllerTest < ActionController::TestCase
   end
 
   test "should update flick" do
-    patch :update, id: @flick, flick: { imdb_id: @flick.imdb_id }
+    patch :update, id: @flick, flick: { imdb_id: @flick.imdb_id, user_id: @flick.user_id }
     assert_redirected_to flick_path(assigns(:flick))
   end
 
