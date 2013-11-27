@@ -9,6 +9,9 @@ gem 'sqlite3'
 # Devise authentication
 gem 'devise'
 
+# Curb to fetch movie posters
+gem 'curb'
+
 # Boostrap sass
 gem 'bootstrap-sass'
 

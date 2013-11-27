@@ -1,2 +1,40 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% if user_signed_in? %> <br />
+  <%= link_to 'Add a Flick', new_imdb_datum_path, class: "btn"%>
+<% end %>
+<div class="main_body"> 
+<br />
+<br />
+
+    <% @flicks.each do |imdb_datum| %>
+        <div class="well">
+          <table class="table-bordered">
+          <tr>
+            <strong><%= imdb_datum.title %> (<%= imdb_datum.year %>)</strong>
+              <span style="float: right; margin-bottom: 4px;">
+              <small>    
+                <%= link_to 'Details', imdb_datum, class:"btn btn-mini"%> 
+                <%= link_to 'Remove', imdb_datum, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %> 
+              </small>
+          </tr>
+          <tr>
+            <img src="<%= imdb_datum.poster %>" /> <br />
+              <span>
+                <%= imdb_datum.plot %> 
+              </span>
+              <br />
+              <i class="icon-star"></i>
+              <small>
+                Rated: <%= imdb_datum.rating %> <span class="separators"">|</span>
+                Genre: <%= imdb_datum.genre %> <span class="separators"">|</span>
+                IMDB Rating: <%= imdb_datum.imdbrating %>  
+              </small>
+          </tr> 
+           </table>
+        </div>
+    <% end %>
+
+<br />
+
+
+  
+</div>

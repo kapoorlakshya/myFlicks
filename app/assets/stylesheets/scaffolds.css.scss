@@ -1,38 +1,16 @@
 body {
   background-color: #fff;
+  margin: auto;
+  width: 840px;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'Droid Sans', sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
-}
-
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
+.main_body {
+  width: 60%;
+  margin: auto;
 }
 
 #notice {
@@ -67,3 +45,23 @@ div {
     list-style: square;
   }
 }
+
+
+img {
+  height: 30%;
+  width: auto;
+} 
+
+table {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+h2 {
+
+}
+
+.separators {
+  color: #D8D8D8;
+}
+

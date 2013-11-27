@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-#    @flicks = Flicks.recently_added
+    @flicks = ImdbDatum.all
   end
 end
