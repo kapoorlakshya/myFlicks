@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     ImdbDatum.all.each { |i|
       imdb_array.push(i)
     }
-    @imdb_data = imdb_array.uniq.last(5)
+    @imdb_data = imdb_array.uniq
 
     flick_array = Array.new
     Flick.all.each { |f|

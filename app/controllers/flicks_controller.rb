@@ -4,8 +4,8 @@ class FlicksController < ApplicationController
   # GET /flicks
   # GET /flicks.json
   def index
-#    @flicks = Flick.all   
-    redirect_to your_flicks_path
+    @flicks = Flick.all   
+#    redirect_to your_flicks_path
   end
 
   # GET /flicks/1

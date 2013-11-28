@@ -72,7 +72,7 @@ class ImdbDataController < ApplicationController
       @imdb_datum.save
 
       if @flick.save && @imdb_datum.save
-        redirect_to root_url, notice: "#{@imdb_datum.title} (#{@imdb_datum.year}) was successfully added."
+        redirect_to your_flicks_path, notice: "#{@imdb_datum.title} (#{@imdb_datum.year}) was successfully added."
       else
         render 'new'
       end
