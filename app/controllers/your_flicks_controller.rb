@@ -4,7 +4,12 @@ class YourFlicksController < ApplicationController
   # GET /your_flicks
   # GET /your_flicks.json
   def index
-    @your_flicks = YourFlick.all
+    data_array = Array.new
+    ImdbDatum.all.each { |f|
+      data_array.push(f)
+    }
+    @imdb_data = data_array.uniq
+    @flicks = Flick.all
   end
 
   # GET /your_flicks/1

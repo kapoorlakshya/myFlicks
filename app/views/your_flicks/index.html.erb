@@ -1,25 +1,41 @@
-<h1>Listing your_flicks</h1>
+<br />
+<br />
+<span class="sub_heading">Your Flicks</span>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<br />
 
-  <tbody>
-    <% @your_flicks.each do |your_flick| %>
-      <tr>
-        <td><%= link_to 'Show', your_flick %></td>
-        <td><%= link_to 'Edit', edit_your_flick_path(your_flick) %></td>
-        <td><%= link_to 'Destroy', your_flick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @flicks.each do |flick| %>
+    <% if flick.user_id == current_user.id %>
+      <% @imdb_data.each do |imdb_datum| %>
+        <% if flick.imdb_id == imdb_datum.imdb_id %>
+          <div class="well">
+            <div id="poster_index"><img src="<%= imdb_datum.poster %>" /></div>
 
-<br>
+            <div id="flick_title"><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>"><%= imdb_datum.title %> (<%= imdb_datum.year %>)</a></div>
 
-<%= link_to 'New Your flick', new_your_flick_path %>
+            <div id="flick_options">
+            <small>
+              <%= link_to 'X', flick, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %>
+            </small>
+            </div>
+
+            <br />
+  
+            <span id="plot_extra">
+              <small>
+                Rated: <%= imdb_datum.rating %> <span class="separators">|</span>
+                Genre: <%= imdb_datum.genre %> <span class="separators">|</span>
+                IMDB Rating: <%= imdb_datum.imdbrating %>
+              </small>
+            </span>
+
+            <br />
+
+            <div id="plot"><%= imdb_datum.plot %></div>
+          </div>
+        <% end %> <!-- flick imdb id check -->
+      <% end %> <!-- imdb data each end -->
+    <% end %> <!-- if flick user id end -->
+  <% end %> <!-- Flicks ends -->
+<br />
+
