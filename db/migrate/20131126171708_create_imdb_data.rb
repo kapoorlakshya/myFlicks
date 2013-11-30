@@ -1,6 +1,7 @@
 class CreateImdbData < ActiveRecord::Migration
   def change
     create_table :imdb_data do |t|
+      t.string :unique_id
       t.string :imdb_id
       t.string :title
       t.string :year

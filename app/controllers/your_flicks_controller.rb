@@ -11,11 +11,11 @@ class YourFlicksController < ApplicationController
 
     @imdb_data = data_array.uniq
     @flicks = Flick.all
-    @your_flicks = Array.new
+    @flicks_data = Array.new
 
-    @flicks.each do |f|
+    @flicks.all.each do |f|
       if current_user.id == f.user_id
-        @your_flicks.push(f)
+        @flicks_data.push(f)
       end
     end
 
@@ -69,6 +69,7 @@ class YourFlicksController < ApplicationController
   # DELETE /your_flicks/1.json
   def destroy
     @your_flick.destroy
+
     respond_to do |format|
       format.html { redirect_to your_flicks_url }
       format.json { head :no_content }

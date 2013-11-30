@@ -16,11 +16,13 @@ ActiveRecord::Schema.define(version: 20131130033546) do
   create_table "flicks", force: true do |t|
     t.string   "imdb_id"
     t.integer  "user_id"
+    t.string   "unique_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "imdb_data", force: true do |t|
+    t.string   "unique_id"
     t.string   "imdb_id"
     t.string   "title"
     t.string   "year"

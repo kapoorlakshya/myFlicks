@@ -1,15 +1,18 @@
 class HomeController < ApplicationController
   def index
-    imdb_array = Array.new
-    ImdbDatum.all.each { |i|
-      imdb_array.push(i)
-    }
-    @imdb_data = imdb_array.uniq.reverse
+    @recent_flicks = Array.new
+    @user_flicks = Flick.find(:all)
 
-    flick_array = Array.new
-    Flick.all.each { |f|
-      flick_array.push(f)
+    @user_flicks.each { |f| 
+      begin
+      flick_in_user_list = ImdbDatum.find(f.imdb_id)
+        if flick_in_user_list
+          @recent_flicks.push(flick_in_user_list)
+        end
+      rescue
+        next
+      end
     }
-    @flicks = flick_array.uniq
+    @recent_flicks.uniq!
   end
 end

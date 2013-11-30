@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Uniq</th>
       <th>Imdb</th>
       <th>User</th>
       <th></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @flicks.each do |flick| %>
       <tr>
+        <td><%= flick.unique_id %></td>
         <td><%= flick.imdb_id %></td>
         <td><%= flick.user_id %></td>
         <td><%= link_to 'Show', flick %></td>

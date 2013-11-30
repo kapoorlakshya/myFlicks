@@ -32,16 +32,19 @@ class ImdbDataController < ApplicationController
     @imdb_datum = ImdbDatum.new(imdb_datum_params) # New movie entry
     imdb_value = imdb_datum_params["imdb_id"] # Movie title or IMDB id from the form
 
-     @flick = Flick.new
-     @flick.user_id = current_user.id
-     @flick.imdb_id = imdb_value
-     @flick.save
- 
+    unique_id = SecureRandom.hex # Unique ID binding the flick with the IMDB data
+    @flick = Flick.new
+    @flick.unique_id = unique_id
+    @flick.user_id = current_user.id
+    @flick.imdb_id = imdb_value
+    @flick.save
+
     if imdb_value.match(/tt+\d*/)
-      url = URI.escape("http://www.omdbapi.com/?i=#{imdb_value}")
+     url = URI.escape("http://www.omdbapi.com/?i=#{imdb_value}")
     else
       url = URI.escape("http://www.omdbapi.com/?t=#{imdb_value}")
     end
+
     buffer = open(url, "UserAgent" => "Ruby-Wget").read
     result = JSON.parse(buffer) # Parse JSON data to Hash
 
@@ -55,6 +58,7 @@ class ImdbDataController < ApplicationController
     if result["Response"] == "False"
       redirect_to new_imdb_datum_path, notice: "Incorrect title or ID. Please try again with a valid value."
     else
+      @imdb_datum.unique_id = unique_id
       @imdb_datum.imdb_id = imdb_value
       @imdb_datum.title = result["Title"]
       @imdb_datum.year = result["Year"]

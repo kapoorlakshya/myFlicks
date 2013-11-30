@@ -4,7 +4,8 @@ class UserCommentsController < ApplicationController
   # GET /user_comments
   # GET /user_comments.json
   def index
-    @user_comments = UserComment.all
+#    @user_comments = UserComment.all
+    redirect_to root_url
   end
 
   # GET /user_comments/1
