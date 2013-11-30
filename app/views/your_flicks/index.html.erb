@@ -1,9 +1,8 @@
 <br />
 <br />
-<span class="sub_heading">Your flicks</span>
+<span class="sub_heading">Your flicks (<%= @your_flicks.count %>)</span>
 
 <br />
-
   <% @flicks.each do |flick| %>
     <% if flick.user_id == current_user.id %>
       <% @imdb_data.each do |imdb_datum| %>
@@ -36,6 +35,6 @@
         <% end %> <!-- flick imdb id check -->
       <% end %> <!-- imdb data each end -->
     <% end %> <!-- if flick user id end -->
-  <% end %> <!-- Flicks ends -->
+  <% end %>
 <br />
 

@@ -8,10 +8,17 @@ class YourFlicksController < ApplicationController
     ImdbDatum.all.each { |f|
       data_array.push(f)
     }
+
     @imdb_data = data_array.uniq
     @flicks = Flick.all
     @your_flicks = Array.new
-    @your_flicks.push(@flicks.find(current_user.id))
+
+    @flicks.each do |f|
+      if current_user.id == f.user_id
+        @your_flicks.push(f)
+      end
+    end
+
   end
 
   # GET /your_flicks/1
