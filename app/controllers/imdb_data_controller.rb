@@ -8,7 +8,8 @@ class ImdbDataController < ApplicationController
   # GET /imdb_data
   # GET /imdb_data.json
   def index
-    redirect_to root_url
+    @imdb_data = ImdbDatum.all
+#    redirect_to root_url
   end
 
   # GET /imdb_data/1
@@ -28,14 +29,13 @@ class ImdbDataController < ApplicationController
   # POST /imdb_data
   # POST /imdb_data.json
   def create
+    @imdb_datum = ImdbDatum.new(imdb_datum_params) # New movie entry
     imdb_value = imdb_datum_params["imdb_id"] # Movie title or IMDB id from the form
 
-    @flick = Flick.new
-    @flick.user_id = current_user.id
-    @flick.imdb_id = imdb_value
-    @flick.save
-
-    @imdb_datum = ImdbDatum.new(imdb_datum_params) # New movie entry
+     @flick = Flick.new
+     @flick.user_id = current_user.id
+     @flick.imdb_id = imdb_value
+     @flick.save
  
     if imdb_value.match(/tt+\d*/)
       url = URI.escape("http://www.omdbapi.com/?i=#{imdb_value}")

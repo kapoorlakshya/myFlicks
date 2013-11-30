@@ -62,6 +62,7 @@ class FlicksController < ApplicationController
   # DELETE /flicks/1
   # DELETE /flicks/1.json
   def destroy
+    @flick = Flick.find(current_user.id)
     @flick.destroy
     respond_to do |format|
       format.html { redirect_to flicks_url }

@@ -1,0 +1,24 @@
+<%= form_for(@user_comment) do |f| %>
+  <% if @user_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_comment.errors.count, "error") %> prohibited this user_comment from being saved:</h2>
+
+      <ul>
+      <% @user_comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.hidden_field :user_id, readonly: true %>
+    <%= f.hidden_field :user_email, readonly: true %>
+    <%= f.hidden_field :imdb_datum_id, readonly: true %>
+  <div class="field">
+    <%= f.text_area :comment %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Post", class: "btn btn-mini" %>
+    <a href="../../imdb_data/<%= params[:imdb_datum_id] %>", class="btn btn-mini">Discard</a>
+  </div>
+<% end %>

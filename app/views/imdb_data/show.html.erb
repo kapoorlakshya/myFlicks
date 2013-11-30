@@ -45,7 +45,32 @@
   <%= @imdb_datum.flick_type.capitalize %>
 </p>
 
-<%= link_to 'Go Back', imdb_data_path, class: "btn btn-mini" %>
+<!-- <%= link_to 'Go Back', imdb_data_path, class: "btn btn-mini" %> -->
 
 </div>
 
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<% comment_count = @imdb_datum.user_comments.count %>
+<span class="sub_heading">Comments (<%= comment_count %>)</span>
+
+<div id="add_comment"><%= link_to 'Add a comment', new_user_comment_path(:imdb_datum_id => @imdb_datum.imdb_id), class: "btn btn-mini" %></div>
+<br />
+<br />
+<% if comment_count > 0 %>
+  <% @imdb_datum.user_comments.each do |com| %>
+    <div class="user_comments well">
+      <strong><%= com.user_email.split('@')[0] %></strong>: <%= com.comment %>
+    </div>
+  <% end %>
+<% else %>
+No comments posted yet!
+<% end %>
+
+<br />
+<br />
+<br />

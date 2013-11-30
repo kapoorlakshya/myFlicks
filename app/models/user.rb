@@ -5,4 +5,5 @@
          :recoverable, :rememberable, :trackable, :validatable
   
   has_many :flicks, through: :flicks, foreign_key: "imdb_id", :dependent => :destroy
+  has_many :comments
 end

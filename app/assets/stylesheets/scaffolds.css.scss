@@ -128,11 +128,12 @@ hr {
   float: left;
   position: relative;
   margin-top: 16px;
-  margin-right: 5px;
+  margin-right: 6px;
+  margin-bottom: 15px;
 }
 
 div#show_poster img {
-  width: 95%;
+  width: 75%;
   height: auto;
 }
 
@@ -140,3 +141,11 @@ div#show_poster img {
   height: 100px;
 }
 
+.user_comments {
+  padding: 5px;
+  height: auto;
+}
+
+#add_comment {
+  float: right;
+}

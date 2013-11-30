@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127222959) do
+ActiveRecord::Schema.define(version: 20131130033546) do
 
   create_table "flicks", force: true do |t|
     t.string   "imdb_id"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20131127222959) do
     t.string   "actors"
     t.float    "imdbrating"
     t.string   "flick_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_comments", force: true do |t|
+    t.integer  "user_id"
+    t.string   "user_email"
+    t.string   "imdb_datum_id"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

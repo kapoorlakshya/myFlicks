@@ -1,5 +1,7 @@
 Myflicks::Application.routes.draw do
 
+  resources :user_comments
+
   resources :your_flicks
 
   get "your_flicks/index"
