@@ -10,6 +10,8 @@ class YourFlicksController < ApplicationController
     }
     @imdb_data = data_array.uniq
     @flicks = Flick.all
+    @your_flicks = Array.new
+    @your_flicks.push(@flicks.find(current_user.id))
   end
 
   # GET /your_flicks/1
