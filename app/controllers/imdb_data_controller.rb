@@ -32,13 +32,6 @@ class ImdbDataController < ApplicationController
     @imdb_datum = ImdbDatum.new(imdb_datum_params) # New movie entry
     imdb_value = imdb_datum_params["imdb_id"] # Movie title or IMDB id from the form
 
-    unique_id = SecureRandom.hex # Unique ID binding the flick with the IMDB data
-    @flick = Flick.new
-    @flick.unique_id = unique_id
-    @flick.user_id = current_user.id
-    @flick.imdb_id = imdb_value
-    @flick.save
-
     if imdb_value.match(/tt+\d*/)
      url = URI.escape("http://www.omdbapi.com/?i=#{imdb_value}")
     else
@@ -48,16 +41,24 @@ class ImdbDataController < ApplicationController
     buffer = open(url, "UserAgent" => "Ruby-Wget").read
     result = JSON.parse(buffer) # Parse JSON data to Hash
 
-    if result["Poster"] == "N/A"
-      imgur_link = "http://i.imgur.com/OLZVstb.png"
-    else
-      img = `curl --header "Authorization: Client-ID 7b8479c28beaf08" https://api.imgur.com/3/upload/?image=#{result["Poster"]}&type=URL`
-      imgur_link = JSON.parse(img)["data"]["link"]
-    end
-
     if result["Response"] == "False"
       redirect_to new_imdb_datum_path, notice: "Incorrect title or ID. Please try again with a valid value."
     else
+
+      unique_id = SecureRandom.hex # Unique ID binding the flick with the IMDB data
+      @flick = Flick.new
+      @flick.unique_id = unique_id
+      @flick.user_id = current_user.id
+      @flick.imdb_id = imdb_value
+      @flick.save
+
+      if result["Poster"] == "N/A"
+        imgur_link = "http://i.imgur.com/OLZVstb.png"
+      else
+        img = `curl --header "Authorization: Client-ID 7b8479c28beaf08" https://api.imgur.com/3/upload/?image=#{result["Poster"]}&type=URL`
+        imgur_link = JSON.parse(img)["data"]["link"]
+      end
+
       @imdb_datum.unique_id = unique_id
       @imdb_datum.imdb_id = imdb_value
       @imdb_datum.title = result["Title"]

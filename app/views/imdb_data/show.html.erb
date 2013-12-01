@@ -26,13 +26,23 @@
 </p>
 
 <p>
+  <strong>Plot:</strong>
+  <%= @imdb_datum.plot %>
+</p>
+
+<p>
   <strong>Genre:</strong>
   <%= @imdb_datum.genre %>
 </p>
 
 <p>
-  <strong>Plot:</strong>
-  <%= @imdb_datum.plot %>
+  <strong>Genre:</strong>
+  <%= @imdb_datum.director %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @imdb_datum.actors %>
 </p>
 
 <p>
@@ -41,16 +51,17 @@
 </p>
 
 <p>
+  <strong>IMDB Rating:</strong>
+  <%= @imdb_datum.imdbrating %>
+</p>
+
+<p>
   <strong>Type:</strong>
   <%= @imdb_datum.flick_type.capitalize %>
 </p>
 
-<!-- <%= link_to 'Go Back', imdb_data_path, class: "btn btn-mini" %> -->
-
 </div>
 
-<br />
-<br />
 <br />
 <br />
 <br />

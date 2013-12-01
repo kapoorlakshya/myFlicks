@@ -4,21 +4,17 @@ class YourFlicksController < ApplicationController
   # GET /your_flicks
   # GET /your_flicks.json
   def index
-    data_array = Array.new
-    ImdbDatum.all.each { |f|
-      data_array.push(f)
-    }
 
-    @imdb_data = data_array.uniq
+    @imdb_data = ImdbDatum.find(:all).uniq
+
     @flicks = Flick.all
     @flicks_data = Array.new
 
-    @flicks.all.each do |f|
+    @flicks.each do |f|
       if current_user.id == f.user_id
         @flicks_data.push(f)
       end
     end
-
   end
 
   # GET /your_flicks/1

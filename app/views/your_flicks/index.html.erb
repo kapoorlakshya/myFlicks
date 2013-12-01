@@ -3,38 +3,35 @@
 <span class="sub_heading">Your flicks (<%= @flicks_data.count %>)</span>
 
 <br />
-  <% @flicks.each do |flick| %>
-    <% if flick.user_id == current_user.id %>
-      <% @imdb_data.each do |imdb_datum| %>
-        <% if flick.imdb_id == imdb_datum.imdb_id %>
-          <div class="well">
-            <div id="poster_index"><img src="<%= imdb_datum.poster %>" /></div>
+  <% @flicks_data.each do |flick| %>
+    <% @imdb_data.each do |imdb_datum| %>
+      <% if flick.imdb_id == imdb_datum.imdb_id %>
+        <div class="well">
+          <div id="poster_index"><img src="<%= imdb_datum.poster %>" /></div>
 
-            <div id="flick_title"><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>"><%= imdb_datum.title %> (<%= imdb_datum.year %>)</a></div>
+          <div id="flick_title"><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>"><%= imdb_datum.title %> (<%= imdb_datum.year %>)</a></div>
 
-            <div id="flick_options">
-            <small>
-              <%= link_to 'X', flick, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %>
-            </small>
-            </div>
-
-            <br />
-  
-            <span id="plot_extra">
-              <small>
-                Rated: <%= imdb_datum.rating %> <span class="separators">|</span>
-                Genre: <%= imdb_datum.genre %> <span class="separators">|</span>
-                IMDB Rating: <%= imdb_datum.imdbrating %>
-              </small>
-            </span>
-
-            <br />
-
-            <div id="plot"><%= imdb_datum.plot %></div>
+          <div id="flick_options">
+          <small>
+            <%= link_to 'X', flick, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %>
+          </small>
           </div>
-        <% end %> <!-- flick imdb id check -->
-      <% end %> <!-- imdb data each end -->
-    <% end %> <!-- if flick user id end -->
+
+          <br />
+  
+          <span id="plot_extra">
+            <small>
+              Rated: <%= imdb_datum.rating %> <span class="separators">|</span>
+              Genre: <%= imdb_datum.genre %> <span class="separators">|</span>
+              IMDB Rating: <%= imdb_datum.imdbrating %>
+            </small>
+          </span>
+
+          <br />
+
+          <div id="plot"><%= imdb_datum.plot %></div>
+        </div>
+      <% end %> <!-- flick imdb id check -->
+    <% end %> <!-- imdb data each end -->
   <% end %>
 <br />
-
