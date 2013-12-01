@@ -15,6 +15,7 @@ class YourFlicksController < ApplicationController
         @flicks_data.push(f)
       end
     end
+    @flicks_data.reverse!
   end
 
   # GET /your_flicks/1

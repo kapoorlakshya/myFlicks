@@ -13,6 +13,6 @@ class HomeController < ApplicationController
         next
       end
     }
-    @recent_flicks.uniq!
+    @recent_flicks.reverse!.uniq!
   end
 end
