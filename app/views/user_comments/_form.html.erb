@@ -1,4 +1,4 @@
-<%= form_for(@user_comment) do |f| %>
+<%= form_for([@imdb_data, @user_comment]) do |f| %>
   <% if @user_comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user_comment.errors.count, "error") %> prohibited this user_comment from being saved:</h2>

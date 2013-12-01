@@ -1,13 +1,13 @@
 Myflicks::Application.routes.draw do
 
-  resources :user_comments
-
-  resources :your_flicks
 
   get "your_flicks/index"
   get "home/index"  
+
   resources :flicks
   resources :imdb_data
+  resources :your_flicks
+  resources :user_comments
   devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
     @user_flicks.each { |f| 
       begin
-      flick_in_user_list = ImdbDatum.find(f.imdb_id)
+        flick_in_user_list = ImdbDatum.find(f.imdb_id)
         if flick_in_user_list
           @recent_flicks.push(flick_in_user_list)
         end

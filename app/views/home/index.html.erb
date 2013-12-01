@@ -9,6 +9,10 @@
             <div id="poster_index"><img src="<%= imdb_datum.poster %>" /></div>
         
             <div id="flick_title"><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>"><%= imdb_datum.title %> (<%= imdb_datum.year %>)</a></div>
+            <div id="index_comment_count">
+              <% comment_count = imdb_datum.user_comments.count %>
+              <span><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>#comments_section">Comments (<%= comment_count %>)</a></span>
+            </div>
 
             <br />
 
@@ -23,7 +27,9 @@
             <br />
   
             <div id="plot"><%= imdb_datum.plot %></div>
+
           </div>
       <% end %>
 </div>
+
 

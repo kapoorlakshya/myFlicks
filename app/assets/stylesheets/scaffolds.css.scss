@@ -1,5 +1,5 @@
+
 body {
-  background-color: #fff;
   margin: auto;
   width: 840px;
   color: #333;
@@ -135,6 +135,7 @@ hr {
 div#show_poster img {
   width: 75%;
   height: auto;
+  margin-bottom: 40px;
 }
 
 .well {
@@ -147,5 +148,13 @@ div#show_poster img {
 }
 
 #add_comment {
+  float: right;
+}
+
+.on_your_list {
+  float: right;
+}
+
+#index_comment_count {
   float: right;
 }

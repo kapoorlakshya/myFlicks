@@ -16,13 +16,11 @@ class UserCommentsController < ApplicationController
   # GET /user_comments/new
   def new
     @user_comment = UserComment.new
-
     if params[:imdb_datum_id]
       @user_comment.user_id = current_user.id
       @user_comment.user_email = current_user.email
       @user_comment.imdb_datum_id = params[:imdb_datum_id] 
     end
-
   end
 
   # GET /user_comments/1/edit
@@ -33,6 +31,7 @@ class UserCommentsController < ApplicationController
   # POST /user_comments.json
   def create
     @user_comment = UserComment.new(user_comment_params)
+
     if @user_comment.save
       flick_url = user_comment_params["imdb_datum_id"].gsub(" ", "%20")
       redirect_to("/imdb_data/#{flick_url}")
