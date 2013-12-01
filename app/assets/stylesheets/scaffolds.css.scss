@@ -6,6 +6,7 @@ body {
   font-family: 'Droid Sans', sans-serif;
   font-size: 13px;
   line-height: 18px;
+  background-color: #EBE4CB;
 }
 
 .main_body {
@@ -119,8 +120,7 @@ img {
 }
 
 hr {
-  width: 90%;
-  color: #000;
+  color: #ccc;
   margin-top: 0px;
 }
 
@@ -147,8 +147,14 @@ div#show_poster img {
   height: auto;
 }
 
+.user_account_edit {
+  height: auto;
+}
+
 #add_comment {
   float: right;
+  height: auto;
+  padding: 4px;
 }
 
 .on_your_list {
@@ -157,4 +163,24 @@ div#show_poster img {
 
 #index_comment_count {
   float: right;
+}
+
+a {
+  color: #634B5C;
+}
+
+a:hover {
+  color: #DE8559;
+  text-decoration: none;
+}
+
+.delete_flick {
+  color: #DE8559;
+  font-size: 1.5em;
+  padding: 3px;
+}
+
+.comment_box {
+  width: 75%;
+  height: 50%;
 }

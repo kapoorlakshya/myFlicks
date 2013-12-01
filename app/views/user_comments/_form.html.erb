@@ -14,8 +14,8 @@
     <%= f.hidden_field :user_id, readonly: true %>
     <%= f.hidden_field :user_email, readonly: true %>
     <%= f.hidden_field :imdb_datum_id, readonly: true %>
-  <div class="field">
-    <%= f.text_area :comment %>
+  <div class="comment_box">
+    <%= f.text_area :comment, placeholder: "Enter a comment here", class: "comment_box" %>
   </div>
   <div class="actions">
     <%= f.submit "Post", class: "btn btn-mini" %>

@@ -1,6 +1,6 @@
 <br />
 <br />
-<span class="sub_heading">Your flicks (<%= @flicks_data.count %>)</span>
+<span class="sub_heading">Your Flicks (<%= @flicks_data.count %>)</span>
 
 <br />
   <% @flicks_data.each do |flick| %>
@@ -13,7 +13,7 @@
 
           <div id="flick_options">
           <small>
-            <%= link_to 'X', flick, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %>
+            <%= link_to "", flick, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon-remove delete_flick" %>
           </small>
           </div>
 
@@ -35,3 +35,4 @@
     <% end %> <!-- imdb data each end -->
   <% end %>
 <br />
+

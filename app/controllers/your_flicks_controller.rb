@@ -5,17 +5,21 @@ class YourFlicksController < ApplicationController
   # GET /your_flicks.json
   def index
 
-    @imdb_data = ImdbDatum.find(:all).uniq
+    if !user_signed_in?
+      redirect_to root_url, notice: "You must be signed in to access other pages!"
+    else
+      @imdb_data = ImdbDatum.find(:all).uniq
 
-    @flicks = Flick.all
-    @flicks_data = Array.new
+      @flicks = Flick.all
+      @flicks_data = Array.new
 
-    @flicks.each do |f|
-      if current_user.id == f.user_id
-        @flicks_data.push(f)
+      @flicks.each do |f|
+        if current_user.id == f.user_id
+          @flicks_data.push(f)
+        end
       end
+      @flicks_data.reverse!
     end
-    @flicks_data.reverse!
   end
 
   # GET /your_flicks/1

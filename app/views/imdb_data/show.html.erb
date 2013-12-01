@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
 <br />
-
 <div id="show_poster">
   <img src="<%= @imdb_datum.poster %>" />
 </div>
@@ -8,6 +6,8 @@
 <br />
 <span class="show_heading"><%= @imdb_datum.title %></span>
 <br />
+<br />
+  
 
 <div id="show_flick">
 <p>
@@ -69,17 +69,20 @@
 <% comment_count = @imdb_datum.user_comments.count %>
 <span class="sub_heading">Comments (<%= comment_count %>)</span>
 <a href="#comments_section" />
- <div id="add_comment"><%= link_to 'Add a comment', new_user_comment_path(:imdb_datum_id => @imdb_datum.imdb_id), class: "btn btn-mini" %></div> 
+ <div id="add_comment">
+    <%= link_to 'Add a comment', new_user_comment_path(:imdb_datum_id => @imdb_datum.imdb_id), class: "btn btn-small" %>
+  </div> 
 <br />
 <br />
 <% if comment_count > 0 %>
   <% @imdb_datum.user_comments.each do |com| %>
     <div class="user_comments well">
       <strong><%= com.user_email.split('@')[0] %></strong>: <%= com.comment %>
+      <%= link_to "", com, method: :delete, data: { confirm: 'Are you sure?', class: "icon-fullscreen" } %>
     </div>
   <% end %>
 <% else %>
-No comments posted yet!
+  No comments posted yet!
 <% end %>
 
 <br />

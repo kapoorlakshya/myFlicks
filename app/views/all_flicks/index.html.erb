@@ -1,14 +1,15 @@
-<div class="main_body"> 
+<div class="main_body">
 <br />
 <br />
 
-<span class="sub_heading">Recent 5</span>
+<span class="sub_heading">All Flicks (<%= @recent_flicks.count %>)</span>
 <br />
-      <% @recent_flicks.first(5).each do |imdb_datum| %>
+      <% @recent_flicks.each do |imdb_datum| %>
           <div class="well">
             <div id="poster_index"><img src="<%= imdb_datum.poster %>" /></div>
-        
-            <div id="flick_title"><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>"><%= imdb_datum.title %> (<%= imdb_datum.year %>)</a></div>
+
+            <div id="flick_title"><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>"><%= imdb_datum.title %>
+ (<%= imdb_datum.year %>)</a></div>
             <div id="index_comment_count">
               <% comment_count = imdb_datum.user_comments.count %>
               <span><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>#comments_section">Comments (<%= comment_count %>)</a></span>
@@ -20,12 +21,12 @@
               <small>
                 Rated: <%= imdb_datum.rating %> <span class="separators">|</span>
                 Genre: <%= imdb_datum.genre %> <span class="separators">|</span>
-                IMDB Rating: <%= imdb_datum.imdbrating %>  
+                IMDB Rating: <%= imdb_datum.imdbrating %>
               </small>
             </span>
 
             <br />
-  
+
             <div id="plot"><%= imdb_datum.plot %></div>
 
           </div>

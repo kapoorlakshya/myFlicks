@@ -6,7 +6,6 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,300italic' rel='stylesheet' type='text/css'>
-  <%= csrf_meta_tags %>
 </head>
 <body>
 <br />
@@ -14,11 +13,13 @@
   <% if user_signed_in? %>
     Hello, <strong><%= current_user.email.split('@')[0] %></strong>!
     <div id="user_nav_options">
-      <%= link_to "Home", root_url %>
+      <%= link_to "Recently Added", root_url %>
+        <span class="separators">|</span>
+      <%= link_to 'All Flicks', all_flicks_path %>
+        <span class="separators">|</span>
+      <%= link_to 'Your Flicks', your_flicks_path %>
         <span class="separators">|</span>
       <%= link_to 'Add a Flick', new_imdb_datum_path%>
-        <span class="separators">|</span>
-      <%= link_to 'Your Flicks', your_flicks_path(:user_id => current_user.id) %>
         <span class="separators">|</span>
       <%= link_to "Settings", edit_user_registration_path %> 
         <span class="separators">|</span>
@@ -31,7 +32,7 @@
 </div>
 <% if !flash[:notice].blank? %>
   <br />
-  <div class="alert alert-info">
+  <div class="alert .error">
   <%= flash[:notice] %>
   </div>
 <% end %>

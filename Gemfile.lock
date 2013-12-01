@@ -30,6 +30,8 @@ GEM
     bcrypt-ruby (3.1.2)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
+    bootstrap-wysihtml5-rails (0.3.1.23)
+      railties (>= 3.0)
     builder (3.1.4)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -38,7 +40,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    curb (0.8.5)
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -122,8 +123,8 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  bootstrap-wysihtml5-rails
   coffee-rails (~> 4.0.0)
-  curb
   devise
   jbuilder (~> 1.2)
   jquery-rails

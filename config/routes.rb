@@ -1,6 +1,9 @@
 Myflicks::Application.routes.draw do
 
 
+  resources :all_flicks
+
+  get "all_flicks/index"
   get "your_flicks/index"
   get "home/index"  
 

@@ -9,8 +9,8 @@ gem 'sqlite3'
 # Devise authentication
 gem 'devise'
 
-# Curb to fetch movie posters
-gem 'curb'
+# WYSIWYG Editor - bootstrap-wysihtml5
+gem 'bootstrap-wysihtml5-rails'
 
 # Boostrap sass
 gem 'bootstrap-sass'

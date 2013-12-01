@@ -8,8 +8,8 @@ class ImdbDataController < ApplicationController
   # GET /imdb_data
   # GET /imdb_data.json
   def index
-    @imdb_data = ImdbDatum.all
-#    redirect_to root_url
+#    @imdb_data = ImdbDatum.all
+    redirect_to root_url
   end
 
   # GET /imdb_data/1
@@ -49,7 +49,7 @@ class ImdbDataController < ApplicationController
       @flick = Flick.new
       @flick.unique_id = unique_id
       @flick.user_id = current_user.id
-      @flick.imdb_id = imdb_value
+      @flick.imdb_id = result["imdbID"]
       @flick.save
 
       if result["Poster"] == "N/A"
@@ -60,7 +60,7 @@ class ImdbDataController < ApplicationController
       end
 
       @imdb_datum.unique_id = unique_id
-      @imdb_datum.imdb_id = imdb_value
+      @imdb_datum.imdb_id = result["imdbID"]
       @imdb_datum.title = result["Title"]
       @imdb_datum.year = result["Year"]
       @imdb_datum.release_date = result["Released"]

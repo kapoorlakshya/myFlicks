@@ -1,0 +1,17 @@
+<%= form_for(@all_flick) do |f| %>
+  <% if @all_flick.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@all_flick.errors.count, "error") %> prohibited this all_flick from being saved:</h2>
+
+      <ul>
+      <% @all_flick.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

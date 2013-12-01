@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131130033546) do
+ActiveRecord::Schema.define(version: 20131201012300) do
+
+  create_table "all_flicks", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "flicks", force: true do |t|
     t.string   "imdb_id"
