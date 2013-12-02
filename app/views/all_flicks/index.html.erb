@@ -15,11 +15,17 @@
               <span class="icon-comment"></span>
               <% comment_count = imdb_datum.user_comments.count %>
               <span><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>#comments_section">Comments (<%= comment_count %>)</a></span>
-              <br />
-              <br />
               <% if !@current_user_list.include? imdb_datum.imdb_id %>
+                <br />
+                <br />
                 <span class="icon-film"></span>
                 <%= link_to 'Add To myFlicks', new_flick_path(:imdb_id => imdb_datum.imdb_id) %>
+              <% end %>
+              <% if current_user.admin? %>
+                <br />
+                <br />
+                <span class="icon-remove"></span>
+                <%= link_to "Remove Flick", imdb_datum, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
             </div>
             <br />
@@ -36,6 +42,7 @@
             <br />
 
             <div id="plot"><%= imdb_datum.plot.truncate(256, separator: ' ') %></div>
+  
           </div>
       <% end %>
 </div>
