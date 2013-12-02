@@ -4,8 +4,8 @@ class FlicksController < ApplicationController
   # GET /flicks
   # GET /flicks.json
   def index
-#    @flicks = Flick.all   
-    redirect_to your_flicks_path
+    @flicks = Flick.all   
+#    redirect_to your_flicks_path
   end
 
   # GET /flicks/1
@@ -16,8 +16,22 @@ class FlicksController < ApplicationController
   # GET /flicks/new
   def new
     @flick = Flick.new
-    if params[:user_id]
-      @flick.user_id = params[:user_id]
+=begin 
+   if params[:unique_id] && params[:imdb_id]
+      @flick.unique_id = params[:unique_id]
+      @flick.user_id = current_user.id
+      @flick.imdb_id = params[:imdb_id]
+      @flick.save
+      redirect_to your_flicks_path
+=end
+
+    if params[:imdb_id]
+      @imdb_datum = ImdbDatum.find(params[:imdb_id])
+      @flick.unique_id = @imdb_datum.unique_id
+      @flick.user_id = current_user.id
+      @flick.imdb_id = @imdb_datum.imdb_id
+      @flick.save
+      redirect_to your_flicks_path
     else
       redirect_to root_url
     end
@@ -31,8 +45,6 @@ class FlicksController < ApplicationController
   # POST /flicks.json
   def create
 =begin
-#    @flick = Flick.new(flick_params)
-
     respond_to do |format|
       if @flick.save
         format.html { redirect_to @flick, notice: 'Flick was successfully created.' }
@@ -77,6 +89,6 @@ class FlicksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flick_params
-      params.require(:flick).permit(:user_id, :imdb_id)
+      params.require(:flick).permit(:unique_id, :imdb_id, :user_id)
     end
 end

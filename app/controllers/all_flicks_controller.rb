@@ -3,20 +3,25 @@ class AllFlicksController < ApplicationController
     if !user_signed_in?
       redirect_to root_url, notice: "You must be signed in to access other pages!"
     else
-      @recent_flicks = Array.new
-      @user_flicks = Flick.find(:all)
+      @active_flicks = Array.new
+      @current_user_flicks = Array.new
+      @all_user_flicks = Flick.all
 
-      @user_flicks.each { |f|
+      @all_user_flicks.each { |f|
         begin
-          flick_in_user_list = ImdbDatum.find(f.imdb_id)
-          if flick_in_user_list
-            @recent_flicks.push(flick_in_user_list)
+          active_flicks_by_users = ImdbDatum.find(f.imdb_id)
+          if active_flicks_by_users
+            @active_flicks.push(active_flicks_by_users)
+          end
+
+          if f.user_id != current_user.id
+            @current_user_flicks.push(f.imdb_id)
           end
         rescue
           next
         end
       }
-      @recent_flicks.uniq!
+      @active_flicks.uniq!
     end
   end
 end

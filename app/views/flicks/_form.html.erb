@@ -11,15 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :imdb_id %><br>
-    <%= f.text_field :imdb_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
+    <%= f.hidden_field :user_id, readonly: true %>
+    <%= f.hidden_field :unique_id, readonly: true %>
+    <%= f.hidden_field :imdb_id, readonly: true %>
+
+<div id="show_poster">
+  <img src="<%= @imdb_datum.poster %>" />
+</div>
+
+<br />
+<span class="show_heading"><%= @imdb_datum.title %> (<%= @imdb_datum.year %>)</span>
+<br />
+<br />
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add to MyFlicks", class: "btn" %>
   </div>
 <% end %>

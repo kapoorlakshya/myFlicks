@@ -11,10 +11,16 @@
 
           <div id="flick_title"><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>"><%= imdb_datum.title %> (<%= imdb_datum.year %>)</a></div>
 
-          <div id="flick_options">
-          <small>
-            <%= link_to "", flick, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon-remove delete_flick" %>
-          </small>
+          <div id="index_flick_options">
+            <span class="icon-comment"></span>
+            <% comment_count = imdb_datum.user_comments.count %>
+            <span><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>#comments_section">Comments (<%= comment_count %>)</a></span>
+
+            <br />
+            <br />
+
+            <span class="icon-remove"></span>
+            <%= link_to "Remove Flick", flick, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
 
           <br />
