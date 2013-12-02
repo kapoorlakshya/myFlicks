@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MyFlicks</title>
+  <title>myFlicks</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -15,35 +15,37 @@
 <div id="top">
   <div id="header">
     <center>
-      <span id="logo_left">(</span>
-      <span id="logo">MyFlicks</span>
-      <span id="logo_left">)</span>
+      <a href="<%= root_url %>" alt="myFlicks Home">
+        <span id="logo_side">(</span>
+        <span id="logo">myFlicks</span>
+        <span id="logo_side">)</span>
+      </a>
     </center>
   </div>
 
-<br />
+  <br />
 
-<div id="user_nav">
-  <% if user_signed_in? %>
-    Hello, <strong><%= current_user.email.split('@')[0] %></strong>!
-    <div id="user_nav_options">
-      <%= link_to "Recently Added", root_url %>
+  <div id="user_nav">
+    <% if user_signed_in? %>
+      Hello, <strong><%= current_user.email.split('@')[0] %></strong>!
+      <div id="user_nav_options">
+        <%= link_to "Recently Added", root_url %>
         <span class="separators">|</span>
-      <%= link_to 'All Flicks', all_flicks_path %>
+        <%= link_to 'All Flicks', all_flicks_path %>
         <span class="separators">|</span>
-      <%= link_to 'MyFlicks', your_flicks_path %>
+        <%= link_to 'myFlicks', your_flicks_path %>
         <span class="separators">|</span>
-      <%= link_to 'Add a Flick', new_imdb_datum_path%>
+        <%= link_to 'Add a Flick', new_imdb_datum_path%>
         <span class="separators">|</span>
-      <%= link_to "Settings", edit_user_registration_path %> 
+        <%= link_to "Settings", edit_user_registration_path %> 
         <span class="separators">|</span>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    </div>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or
-    <%= link_to "Sign in", new_user_session_path %>
-  <% end %>
-</div>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      </div>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> or
+      <%= link_to "Sign in", new_user_session_path %>
+    <% end %>
+  </div>
 </div>
 
 <% if !flash[:notice].blank? %>

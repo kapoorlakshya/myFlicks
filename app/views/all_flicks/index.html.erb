@@ -19,7 +19,7 @@
               <br />
               <% if !@current_user_flicks.include? imdb_datum.imdb_id %>
                 <span class="icon-film"></span>
-                <%= link_to 'Add To MyFlicks', new_flick_path(:imdb_id => imdb_datum.imdb_id) %>
+                <%= link_to 'Add To myFlicks', new_flick_path(:imdb_id => imdb_datum.imdb_id) %>
               <% end %>
             </div>
             <br />
@@ -35,7 +35,7 @@
 
             <br />
 
-            <div id="plot"><%= imdb_datum.plot %></div>
+            <div id="plot"><%= imdb_datum.plot.truncate(256, separator: ' ') %></div>
           </div>
       <% end %>
 </div>

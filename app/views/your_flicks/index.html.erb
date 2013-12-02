@@ -36,7 +36,7 @@
 
           <br />
 
-          <div id="plot"><%= imdb_datum.plot %></div>
+          <div id="plot"><%= imdb_datum.plot.truncate(256, separator: ' ') %></div>
         </div>
       <% end %> <!-- flick imdb id check -->
     <% end %> <!-- imdb data each end -->
