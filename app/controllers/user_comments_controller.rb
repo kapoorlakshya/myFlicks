@@ -59,23 +59,29 @@ class UserCommentsController < ApplicationController
   # PATCH/PUT /user_comments/1
   # PATCH/PUT /user_comments/1.json
   def update
-    respond_to do |format|
       if @user_comment.update(user_comment_params)
-        format.html { redirect_to @user_comment, notice: 'User comment was successfully updated.' }
-        format.json { head :no_content }
+        flick_url = user_comment_params["imdb_datum_id"]
+        redirect_to("/imdb_data/#{flick_url}")
+      end
+=begin
+    respond_to do |format|
+    #    format.html { redirect_to @user_comment, notice: 'User comment was successfully updated.' }
+    #    format.json { head :no_content }
       else
         format.html { render action: 'edit' }
         format.json { render json: @user_comment.errors, status: :unprocessable_entity }
       end
     end
+=end
   end
 
   # DELETE /user_comments/1
   # DELETE /user_comments/1.json
   def destroy
     @user_comment.destroy
+
     respond_to do |format|
-      format.html { redirect_to user_comments_url }
+      format.html { redirect_to root_url, notice: "Your comment was deleted!" }
       format.json { head :no_content }
     end
   end

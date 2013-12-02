@@ -78,7 +78,12 @@
   <% @imdb_datum.user_comments.each do |com| %>
     <div class="user_comments well">
       <strong><%= com.user_email.split('@')[0] %></strong>: <%= com.comment %>
-      <%= link_to "", com, method: :delete, data: { confirm: 'Are you sure?', class: "icon-fullscreen" } %>
+      <% if current_user.id == com.user_id %>
+        <span class="comment_options">
+          <%= link_to '', edit_user_comment_path(com, :imdb_datum_id => @imdb_datum.imdb_id), class: "icon-pencil" %>
+          <%= link_to '', com, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon-remove" %>
+        </span>
+     <% end %>
     </div>
   <% end %>
 <% else %>

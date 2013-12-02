@@ -53,7 +53,7 @@ class ImdbDataController < ApplicationController
       @flick.save
 
       if result["Poster"] == "N/A"
-        imgur_link = "http://i.imgur.com/OLZVstb.png"
+        imgur_link = "http://i.imgur.com/DTlIlng.png"
       else
         img = `curl --header "Authorization: Client-ID 7b8479c28beaf08" https://api.imgur.com/3/upload/?image=#{result["Poster"]}&type=URL`
         imgur_link = JSON.parse(img)["data"]["link"]
