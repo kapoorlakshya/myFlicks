@@ -1,0 +1,94 @@
+<br />
+<div id="show_poster">
+  <img src="<%= @imdb_datum.poster %>" />
+</div>
+ 
+<br />
+<span class="show_heading"><%= @imdb_datum.title %></span>
+<br />
+<br />
+  
+<div id="show_flick">
+<p>
+  <strong>Type:</strong>
+  <%= @imdb_datum.flick_type.capitalize %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @imdb_datum.year %>
+</p>
+
+<p>
+  <strong>Release date:</strong>
+  <%= @imdb_datum.release_date %>
+</p>
+
+<p>
+  <strong>Runtime:</strong>
+  <%= @imdb_datum.runtime %>
+</p>
+
+<p>
+  <strong>Plot:</strong>
+  <%= @imdb_datum.plot %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @imdb_datum.genre %>
+</p>
+
+<p>
+  <strong>Director(s):</strong>
+  <%= @imdb_datum.director %>
+</p>
+
+<p>
+  <strong>Actor(s):</strong>
+  <%= @imdb_datum.actors %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @imdb_datum.rating %>
+</p>
+
+<p>
+  <strong>IMDB Rating:</strong>
+  <%= @imdb_datum.imdbrating %>
+</p>
+
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<% comment_count = @imdb_datum.user_comments.count %>
+<span class="sub_heading">Comments (<%= comment_count %>)</span>
+<a href="#comments_section" />
+ <div id="add_comment">
+    <%= link_to 'Add a comment', new_user_comment_path(:imdb_datum_id => @imdb_datum.imdb_id), class: "btn btn-small" %>
+  </div> 
+<br />
+<br />
+<% if comment_count > 0 %>
+  <% @imdb_datum.user_comments.each do |com| %>
+    <div class="user_comments well">
+      <strong><%= com.user_email.split('@')[0] %></strong>: <%= com.comment %>
+      <% if current_user.id == com.user_id %>
+        <span class="comment_options">
+          <%= link_to '', edit_user_comment_path(com, :imdb_datum_id => @imdb_datum.imdb_id), class: "icon-pencil" %>
+          <%= link_to '', com, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon-remove" %>
+        </span>
+     <% end %>
+    </div>
+  <% end %>
+<% else %>
+  No comments posted yet!
+<% end %>
+
+<br />
+<br />
+<br />

@@ -1,0 +1,30 @@
+<h1>Listing flicks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uniq</th>
+      <th>Imdb</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @flicks.each do |flick| %>
+      <tr>
+        <td><%= flick.unique_id %></td>
+        <td><%= flick.imdb_id %></td>
+        <td><%= flick.user_id %></td>
+        <td><%= link_to 'Show', flick %></td>
+        <td><%= link_to 'Edit', edit_flick_path(flick) %></td>
+        <td><%= link_to 'Destroy', flick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

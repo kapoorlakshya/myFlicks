@@ -1,0 +1,22 @@
+<%= form_for(@imdb_datum) do |f| %>
+  <% if @imdb_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@imdb_datum.errors.count, "error") %> prohibited this imdb_datum from being saved:</h2>
+
+      <ul>
+      <% @imdb_datum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="well">
+  <div class="field">
+    <%= f.label :imdb_id, "Enter a title or IMDB Id" %> 
+    <%= f.text_field :imdb_id, autofocus: true %>
+    <br />
+    <%= f.submit id="Add", class:"btn" %>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,31 @@
+<%= form_for(@flick) do |f| %>
+  <% if @flick.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@flick.errors.count, "error") %> prohibited this flick from being saved:</h2>
+
+      <ul>
+      <% @flick.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.hidden_field :user_id, readonly: true %>
+    <%= f.hidden_field :unique_id, readonly: true %>
+    <%= f.hidden_field :imdb_id, readonly: true %>
+
+<div id="show_poster">
+  <img src="<%= @imdb_datum.poster %>" />
+</div>
+
+<br />
+<span class="show_heading"><%= @imdb_datum.title %> (<%= @imdb_datum.year %>)</span>
+<br />
+<br />
+
+
+  <div class="actions">
+    <%= f.submit "Add to MyFlicks", class: "btn" %>
+  </div>
+<% end %>

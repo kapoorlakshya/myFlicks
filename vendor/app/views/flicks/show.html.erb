@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Imdb:</strong>
+  <%= @flick.imdb_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @flick.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_flick_path(@flick) %> |
+<%= link_to 'Back', flicks_path %>

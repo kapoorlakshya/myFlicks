@@ -1,0 +1,43 @@
+<div class="main_body">
+<br />
+<br />
+
+<span class="sub_heading">All Flicks (<%= @active_flicks.count %>)</span>
+<br />
+      <% @active_flicks.each do |imdb_datum| %>
+          <div class="well">
+            <div id="poster_index"><img src="<%= imdb_datum.poster %>" /></div>
+
+            <div id="flick_title">
+              <a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>"><%= imdb_datum.title %> (<%= imdb_datum.year %>)</a>
+            </div>
+            <div id="index_flick_options"> 
+              <span class="icon-comment"></span>
+              <% comment_count = imdb_datum.user_comments.count %>
+              <span><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>#comments_section">Comments (<%= comment_count %>)</a></span>
+              <br />
+              <br />
+              <% if !@current_user_flicks.include? imdb_datum.imdb_id %>
+                <span class="icon-film"></span>
+                <%= link_to 'Add To myFlicks', new_flick_path(:imdb_id => imdb_datum.imdb_id) %>
+              <% end %>
+            </div>
+            <br />
+
+            <span id="plot_extra">
+              <small>
+                Type: <%= imdb_datum.flick_type.capitalize! %> <span class="separators">|</span>
+                Rated: <%= imdb_datum.rating %> <span class="separators">|</span>
+                Genre: <%= imdb_datum.genre %> <span class="separators">|</span>
+                IMDB Rating: <%= imdb_datum.imdbrating %>
+              </small>
+            </span>
+
+            <br />
+
+            <div id="plot"><%= imdb_datum.plot.truncate(256, separator: ' ') %></div>
+          </div>
+      <% end %>
+</div>
+
+

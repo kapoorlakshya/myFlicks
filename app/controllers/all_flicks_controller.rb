@@ -4,7 +4,7 @@ class AllFlicksController < ApplicationController
       redirect_to root_url, notice: "You must be signed in to access other pages!"
     else
       @active_flicks = Array.new
-      @current_user_flicks = Array.new
+      @not_in_current_user_flicks = Array.new
       @all_user_flicks = Flick.all
 
       @all_user_flicks.each { |f|
@@ -15,7 +15,7 @@ class AllFlicksController < ApplicationController
           end
 
           if f.user_id != current_user.id
-            @current_user_flicks.push(f.imdb_id)
+            @not_in_current_user_flicks.push(f.imdb_id)
           end
         rescue
           next

@@ -4,8 +4,8 @@ class FlicksController < ApplicationController
   # GET /flicks
   # GET /flicks.json
   def index
-    @flicks = Flick.all   
-#    redirect_to your_flicks_path
+#    @flicks = Flick.all   
+    redirect_to your_flicks_path
   end
 
   # GET /flicks/1
@@ -16,18 +16,10 @@ class FlicksController < ApplicationController
   # GET /flicks/new
   def new
     @flick = Flick.new
-=begin 
-   if params[:unique_id] && params[:imdb_id]
-      @flick.unique_id = params[:unique_id]
-      @flick.user_id = current_user.id
-      @flick.imdb_id = params[:imdb_id]
-      @flick.save
-      redirect_to your_flicks_path
-=end
 
     if params[:imdb_id]
       @imdb_datum = ImdbDatum.find(params[:imdb_id])
-      @flick.unique_id = @imdb_datum.unique_id
+      @flick.unique_id = SecureRandom.hex
       @flick.user_id = current_user.id
       @flick.imdb_id = @imdb_datum.imdb_id
       @flick.save
