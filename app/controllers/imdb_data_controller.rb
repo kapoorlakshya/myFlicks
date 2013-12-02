@@ -33,9 +33,9 @@ class ImdbDataController < ApplicationController
     imdb_value = imdb_datum_params["imdb_id"] # Movie title or IMDB id from the form
 
     if imdb_value.match(/tt+\d*/)
-     url = URI.escape("http://www.omdbapi.com/?i=#{imdb_value}")
+     url = URI.escape("http://www.omdbapi.com/?i=#{imdb_value}&plot=short")
     else
-      url = URI.escape("http://www.omdbapi.com/?t=#{imdb_value}")
+      url = URI.escape("http://www.omdbapi.com/?t=#{imdb_value}&plot=short")
     end
 
     buffer = open(url, "UserAgent" => "Ruby-Wget").read

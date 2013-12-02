@@ -112,7 +112,9 @@ img {
 }
 
 #user_nav {
-  border-bottom: 1px solid;
+  border-bottom: 2px solid #634B5C;
+  padding: 3px;
+  color: #634B5C;
 }
 
 #show_flick {
@@ -133,7 +135,7 @@ hr {
 }
 
 div#show_poster img {
-  width: 75%;
+  width: 80%;
   height: auto;
   margin-bottom: 40px;
 }
@@ -187,4 +189,16 @@ a:hover {
 
 .comment_options {
   float: right;
+}
+
+#header {
+  padding-top: 15px;
+}
+
+#logo {
+  font-family: 'Allan', cursive;
+  font-size: 4.0em;
+  font-weight: normal;
+  position: relative;
+  color: #634B5C;
 }
