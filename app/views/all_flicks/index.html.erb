@@ -2,9 +2,9 @@
 <br />
 <br />
 
-<span class="sub_heading">All Flicks (<%= @active_flicks.count %>)</span>
+<span class="sub_heading">All Flicks (<%= @active_flicks_data.count %>)</span>
 <br />
-      <% @active_flicks.each do |imdb_datum| %>
+      <% @active_flicks_data.each do |imdb_datum| %>
           <div class="well">
             <div id="poster_index"><img src="<%= imdb_datum.poster %>" /></div>
 
@@ -17,7 +17,7 @@
               <span><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>#comments_section">Comments (<%= comment_count %>)</a></span>
               <br />
               <br />
-              <% if @not_in_current_user_flicks.include? imdb_datum.imdb_id %>
+              <% if !@current_user_list.include? imdb_datum.imdb_id %>
                 <span class="icon-film"></span>
                 <%= link_to 'Add To myFlicks', new_flick_path(:imdb_id => imdb_datum.imdb_id) %>
               <% end %>

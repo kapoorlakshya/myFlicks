@@ -15,7 +15,7 @@
               <span><a href="<%= imdb_datum_path(imdb_datum.imdb_id) %>#comments_section">Comments (<%= comment_count %>)</a></span>
                 <br />
                 <br />
-              <% if @not_in_current_user_flicks.include? imdb_datum.imdb_id %>
+              <% if !@current_user_list.include? imdb_datum.imdb_id %>
                 <span class="icon-film"></span>
                 <%= link_to 'Add To myFlicks', new_flick_path(:imdb_id => imdb_datum.imdb_id) %>
               <% end %>
