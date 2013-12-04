@@ -97,6 +97,8 @@ img {
   font-weight: 300;
   font-size: 2.0em;
   margin-bottom: 5px;
+  float: left;
+  line-height: 30px;
 }
 
 .show_heading {
@@ -114,7 +116,7 @@ img {
 
 #user_nav {
   border-bottom: 2px solid #634B5C;
-  padding: 3px;
+  padding: 2px;
   color: #634B5C;
 }
 
@@ -124,7 +126,6 @@ img {
 
 hr {
   color: #ccc;
-  margin-top: 0px;
 }
 
 #show_poster {
@@ -138,7 +139,7 @@ hr {
 div#show_poster img {
   width: 80%;
   height: auto;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .well {
@@ -234,4 +235,14 @@ div#top {
   width: 840px;
   background-color: #EBE4CB;
 }
+
+#search-form {
+  float: right;
+  margin: 0px;
+}
+
+#admin_option {
+  color: #C33A2D;
+}
+
 

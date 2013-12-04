@@ -3,6 +3,8 @@
 <span class="sub_heading">Your Flicks (<%= @flicks_data.count %>)</span>
 
 <br />
+<br />
+
   <% @flicks_data.each do |flick| %>
     <% @imdb_data.each do |imdb_datum| %>
       <% if flick.imdb_id == imdb_datum.imdb_id %>

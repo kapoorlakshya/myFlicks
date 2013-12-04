@@ -1,9 +1,15 @@
 <div class="main_body">
 <br />
 <br />
-
-<span class="sub_heading">All Flicks (<%= @active_flicks_data.count %>)</span>
+<% flick_count = @active_flicks_data.count %>
+<span class="sub_heading">All Flicks (<%= flick_count %>)</span>
+  <%= form_tag(all_flicks_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search by title or year" %>
+  <% end %>
 <br />
+<br />
+  
+  <% if flick_count > 0 %>
       <% @active_flicks_data.each do |imdb_datum| %>
           <div class="well">
             <div id="poster_index"><img src="<%= imdb_datum.poster %>" /></div>
@@ -25,7 +31,7 @@
                 <br />
                 <br />
                 <span class="icon-remove"></span>
-                <%= link_to "Remove Flick", imdb_datum, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to "Remove (Admin)", imdb_datum, method: :delete, data: { confirm: 'Are you sure?' }, id: "admin_option" %>
               <% end %>
             </div>
             <br />
@@ -45,6 +51,10 @@
   
           </div>
       <% end %>
+  <% else %>
+    No matching flicks found. Feel free to <u><a href="<%= new_imdb_datum_path %>">add a flick</a></u> from the IMDB database.
+
+  <% end %>
 </div>
 
 
