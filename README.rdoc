@@ -45,8 +45,12 @@ Demonstrate your application to the class the last two weeks of the semester.
 
 == Screenshots
 
-![alt Index](https://github.com/kapoorlakshya/cins465-p8/blob/master/screenshots/index.png)
+![alt tag](https://github.com/kapoorlakshya/cins465-p8/blob/master/screenshots/index.png)
+
 ![alt All Flicks](https://github.com/kapoorlakshya/cins465-p8/blob/master/screenshots/allflicks.png)
+
 ![alt Add a flick](https://github.com/kapoorlakshya/cins465-p8/blob/master/screenshots/addflick.png)
+
 ![alt myFlicks](https://github.com/kapoorlakshya/cins465-p8/blob/master/screenshots/myflicks.png)
+
 ![alt Show Flick](https://github.com/kapoorlakshya/cins465-p8/blob/master/screenshots/showflick.png)
