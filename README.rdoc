@@ -1,28 +1,52 @@
-== README
+= myFlicks
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+myFlicks is an online movie discussion board that fetches flick details from the IMDB API at imdbapi.com. It also uses the imgur.com API to host the posters since IMDB does not allow hotlinking images on their server.
 
-Things you may want to cover:
+== Features
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Fetch any flick by title or IMDB iid.
+* View your flicks
+* Comment on flicks
+* Search on myFlicks internal database for flicks by title or year
+* Quick-add button to add other user's flick to your list
+* Authentication system based on Devsie gem
+* First user to sign up is the admin. 'rake db:seed' after creating the first user to makegran it admin rights.
 
 
-Please feel free to use a different markup language if you do not plan to run
+== Upcoming features
+
+* View other user's flicks
+* Flick's show page will include a link to the trailer
+
+
+== Known Bugs
+
+* Flicks returned by internal search displays the quick add button even if the user has it in the list.
+
+== Requirements:
+
+* Ruby 2.0 w/ Rails 4.0
+
+* Imgur.com API Key - https://api.imgur.com/#register
+
+* omdbapi v2.1 - http://www.omdbapi.com/ 
+
+* Gems: Devise and Bootstrap-sass
+
+
+Part of CINS 465 - Project 8: 
+
+Provide user authentication (you may use devise, another gem, or implement authentication from scratch).
+Be complex enough to require a database with multiple tables that relate to each other (one-to-many or one-to-one).
+Provide a service and/or features more complicated then the previous assignments.
+Demonstrate your application to the class the last two weeks of the semester.
+
 <tt>rake doc:app</tt>.
+
+== Screenshots
+
+![alt Index](https://github.com/kapoorlakshya/cins465-p8/blob/master/screenshots/index.png)
+![alt All Flicks](https://github.com/kapoorlakshya/cins465-p8/blob/master/screenshots/allflicks.png)
+![alt Add a flick](https://github.com/kapoorlakshya/cins465-p8/blob/master/screenshots/addflick.png)
+![alt myFlicks](https://github.com/kapoorlakshya/cins465-p8/blob/master/screenshots/myflicks.png)
+![alt Show Flick](https://github.com/kapoorlakshya/cins465-p8/blob/master/screenshots/showflick.png)
