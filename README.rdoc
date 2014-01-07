@@ -1,6 +1,6 @@
 = myFlicks
 
-myFlicks is an online movie discussion board that fetches flick details from the IMDB API at imdbapi.com. It also uses the imgur.com API to host the posters since IMDB does not allow hotlinking images on their server.
+myFlicks is an online movie discussion board that fetches flick details from a third party IMDB API at imdbapi.com. It also uses the imgur.com API to host the posters since IMDB does not allow hotlinking images from their server.
 
 == Features
 
@@ -10,12 +10,12 @@ myFlicks is an online movie discussion board that fetches flick details from the
 * Search on myFlicks internal database for flicks by title or year
 * Quick-add button to add other user's flick to your list
 * Authentication system based on Devsie gem
-* First user to sign up is the admin. 'rake db:seed' after creating the first user to makegran it admin rights.
+* First user to sign up is the admin. 'rake db:seed' after creating the first user to grant it admin rights.
 
 
 == Upcoming features
 
-* View other user's flicks
+* View other user's profile and flicks list
 * Flick's show page will include a link to the trailer
 
 
@@ -40,8 +40,6 @@ Provide user authentication (you may use devise, another gem, or implement authe
 Be complex enough to require a database with multiple tables that relate to each other (one-to-many or one-to-one).
 Provide a service and/or features more complicated then the previous assignments.
 Demonstrate your application to the class the last two weeks of the semester.
-
-<tt>rake doc:app</tt>.
 
 == Screenshots
 
