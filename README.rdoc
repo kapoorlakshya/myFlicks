@@ -4,7 +4,7 @@ myFlicks is an online movie discussion board that fetches flick details from a t
 
 == Features
 
-* Fetch any flick by title or IMDB iid.
+* Fetch any flick by title or IMDB id.
 * View your flicks
 * Comment on flicks
 * Search on myFlicks internal database for flicks by title or year
