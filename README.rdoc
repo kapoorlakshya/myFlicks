@@ -33,14 +33,6 @@ myFlicks is an online movie discussion board that fetches flick details from a t
 
 * Gems: Devise and Bootstrap-sass
 
-
-Part of CINS 465 - Project 8: 
-
-Provide user authentication (you may use devise, another gem, or implement authentication from scratch).
-Be complex enough to require a database with multiple tables that relate to each other (one-to-many or one-to-one).
-Provide a service and/or features more complicated then the previous assignments.
-Demonstrate your application to the class the last two weeks of the semester.
-
 == Screenshots
 
 http://i.imgur.com/JvbsHnS.png
